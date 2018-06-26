@@ -5,12 +5,13 @@ const BookList = props => {
   return (
     <div className="bookshelf-books">
       <ol className="books-grid">
-        {props.books.map(book) => (
+        {props.books.map((book) => (
           <Book
             book={book}
             shelf={props.shelf}
+            key={book.name}
           />
-        )}
+        ))}
       </ol>
     </div>
   )
