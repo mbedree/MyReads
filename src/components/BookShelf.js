@@ -14,21 +14,21 @@ const BookShelf = props => {
             <h2 className="bookshelf-title">Currently Reading</h2>
             <BookList
               books={props.books}
-              shelf={"Current"}
+              shelf={"currentlyReading"}
             />
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Want to Read</h2>
             <BookList
               books={props.books}
-              shelf={"Want"}
+              shelf={"wantToRead"}
             />
           </div>
           <div className="bookshelf">
             <h2 className="bookshelf-title">Read</h2>
             <BookList
               books={props.books}
-              shelf={"Read"}
+              shelf={"read"}
             />
           </div>
         </div>
