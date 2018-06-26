@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import * as BooksAPI from '../BooksAPI';
 
 class SearchBar extends Component {
   constructor(props) {
     super(props);
 
     this.state= {
-      searchTerm: ''
+      searchTerm: '',
+      searchedBooks: []
     }
   }
 
@@ -14,6 +16,12 @@ class SearchBar extends Component {
     this.setState(() =>({
       searchTerm: term
     }))
+    BooksAPI.search(term)
+    .then((books) => {
+      this.setState(() => ({
+        searchedBooks: books
+      }))
+    })
   }
 
   render() {
