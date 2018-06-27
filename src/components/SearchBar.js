@@ -48,7 +48,14 @@ class SearchBar extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+              {Object.keys(this.state.searchedBooks).map((id) => (
+                <SearchedBookList
+                  book={this.state.searchedBooks[id]}
+                  key={id}
+                />
+              ))}
+              </ol>
             </div>
           </div>
     )
