@@ -15,6 +15,7 @@ const BookShelf = props => {
             <BookList
               books={props.books}
               shelf={"currentlyReading"}
+              updateBooks={props.updateBooks}
             />
           </div>
           <div className="bookshelf">
@@ -22,6 +23,7 @@ const BookShelf = props => {
             <BookList
               books={props.books}
               shelf={"wantToRead"}
+              updateBooks={props.updateBooks}
             />
           </div>
           <div className="bookshelf">
@@ -29,6 +31,7 @@ const BookShelf = props => {
             <BookList
               books={props.books}
               shelf={"read"}
+              updateBooks={props.updateBooks}
             />
           </div>
         </div>

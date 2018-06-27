@@ -10,6 +10,7 @@ const BookList = props => {
             book={props.books[id]}
             shelf={props.shelf}
             key={id}
+            updateBooks={props.updateBooks}
           />
         ))}
       </ol>
