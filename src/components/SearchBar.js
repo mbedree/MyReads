@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import * as BooksAPI from '../BooksAPI';
+import SearchedBookList from './SearchedBookList';
 
 class SearchBar extends Component {
   constructor(props) {
