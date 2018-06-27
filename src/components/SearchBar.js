@@ -9,7 +9,8 @@ class SearchBar extends Component {
 
     this.state= {
       searchTerm: '',
-      searchedBooks: []
+      searchedBooks: [],
+      results: "empty"
     }
   }
 
@@ -17,12 +18,29 @@ class SearchBar extends Component {
     this.setState(() =>({
       searchTerm: term
     }))
-    BooksAPI.search(term)
-    .then((books) => {
-      this.setState(() => ({
-        searchedBooks: books
+    if(term === ''){
+      this.setState(() =>({
+        results: "empty"
       }))
-    })
+
+    }
+    else {
+      BooksAPI.search(term)
+      .then((books) => {
+        if(books.error){
+          this.setState(() => ({
+            results: "false",
+            searchedBooks: []
+          }))
+        }
+        else {
+          this.setState(() => ({
+            results: "true",
+            searchedBooks: books
+          }))
+        }
+      })
+    }
   }
 
   render() {
@@ -49,14 +67,21 @@ class SearchBar extends Component {
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid">
-              {Object.keys(this.state.searchedBooks).map((id) => (
-                <SearchedBookList
-                  book={this.state.searchedBooks[id]}
-                  key={id}
-                />
-              ))}
-              </ol>
+            {this.state.results === "empty" ?
+              <div></div>
+            :
+              this.state.results === "false" ?
+                <div>No Books Found</div>
+              :
+                <ol className="books-grid">
+                {Object.keys(this.state.searchedBooks).map((id) => (
+                  <SearchedBookList
+                    book={this.state.searchedBooks[id]}
+                    key={id}
+                  />
+                ))}
+                </ol>
+            }
             </div>
           </div>
     )
