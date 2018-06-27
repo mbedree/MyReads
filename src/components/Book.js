@@ -1,16 +1,27 @@
-import React from 'react';
+import React, { Component } from 'react';
+import * as BooksAPI from '../BooksAPI';
 
-const Book = props => {
+class Book extends Component {
 
+  onSelect(book, shelf) {
+    BooksAPI.update(book, shelf).then((books) => {
+      // this.props.updateBooks()
+    })
+    console.log(book);
+  }
+
+render() {
   return (
     <div>
-      {props.shelf === props.book.shelf && (
+      {this.props.shelf === this.props.book.shelf && (
         <li>
           <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${props.book.imageLinks.thumbnail})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
               <div className="book-shelf-changer">
-                <select>
+                <select
+                  value={this.props.shelf}
+                  onChange={(event) => this.onSelect(this.props.book, event.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
@@ -19,13 +30,14 @@ const Book = props => {
                 </select>
               </div>
             </div>
-            <div className="book-title">{props.book.title}</div>
-            <div className="book-authors">{props.book.authors}</div>
+            <div className="book-title">{this.props.book.title}</div>
+            <div className="book-authors">{this.props.book.authors}</div>
           </div>
         </li>
       )}
     </div>
-  );
+  )
+}
 }
 
 export default Book;
