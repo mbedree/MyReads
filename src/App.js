@@ -19,6 +19,15 @@ class BooksApp extends React.Component {
     })
   }
 
+  upDateBooks() {
+    BooksAPI.getAll()
+    .then((books) => {
+      this.setState(() => ({
+        books
+      }))
+    })
+  }
+
   render() {
     return (
           <div>
