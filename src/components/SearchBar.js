@@ -45,15 +45,6 @@ class SearchBar extends Component {
     }
   }
 
-  updateSearchedBooks() {
-    BooksAPI.search(this.state.searchTerm)
-    .then((books) => {
-        this.setState(() => ({
-          searchedBooks: books
-        }))
-    })
-  }
-
   render() {
     return(
           <div className="search-books">
@@ -88,7 +79,6 @@ class SearchBar extends Component {
                 {Object.keys(this.state.searchedBooks).map((id) => (
                   <SearchedBookList
                     book={this.state.searchedBooks[id]}
-                    updateSearchedBooks={this.updateSearchedBooks}
                     updateBooks={this.props.updateBooks}
                     key={id}
                   />

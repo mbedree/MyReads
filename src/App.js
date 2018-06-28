@@ -26,7 +26,6 @@ class BooksApp extends React.Component {
   }
 
   updateBooks() {
-    console.log("updateBooks");
     BooksAPI.getAll()
     .then((books) => {
       this.setState(() => ({
