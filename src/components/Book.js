@@ -7,7 +7,6 @@ class Book extends Component {
     BooksAPI.update(book, shelf).then((books) => {
       this.props.updateBooks()
     })
-    console.log("onSelect");
   }
 
 render() {
