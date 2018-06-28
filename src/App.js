@@ -6,8 +6,14 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 
 class BooksApp extends React.Component {
-  state = {
-    books: []
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      books: []
+    }
+
+    this.updateBooks = this.updateBooks.bind(this);
   }
 
   componentDidMount() {
@@ -19,17 +25,14 @@ class BooksApp extends React.Component {
     })
   }
 
-  updateBooks(book, shelf) {
-    BooksAPI.update(book, shelf)
-    .then((books) => {
-    })
+  updateBooks() {
     BooksAPI.getAll()
     .then((books) => {
       this.setState(() => ({
         books
       }))
     })
-    console.log("test");
+    console.log("updateBooks");
   }
 
   render() {
