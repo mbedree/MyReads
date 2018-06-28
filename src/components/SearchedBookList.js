@@ -13,7 +13,7 @@ class SearchedBookList extends Component {
   }
 
   render(){
-    const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "" : this.props.book.imageLinks.thumbnail;
+    const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
     const title = typeof this.props.book.title === "undefined" ? "" : this.props.book.title;
     const author = typeof this.props.book.authors === "undefined" ? "" : this.props.book.authors;
     return(
@@ -34,7 +34,7 @@ class SearchedBookList extends Component {
                 </select>
               </div>
             </div>
-            <div className="book-title">{title}</div>
+            <div className="book-title">{this.props.book.title}</div>
             <div className="book-authors">{author}</div>
           </div>
         </li>
