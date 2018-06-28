@@ -77,6 +77,7 @@ class SearchBar extends Component {
                 {Object.keys(this.state.searchedBooks).map((id) => (
                   <SearchedBookList
                     book={this.state.searchedBooks[id]}
+                    updateBooks={this.props.updateBooks}
                     key={id}
                   />
                 ))}
