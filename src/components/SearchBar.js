@@ -12,6 +12,8 @@ class SearchBar extends Component {
       searchedBooks: [],
       results: "empty"
     }
+
+    this.updateSearchedBooks = this.updateSearchedBooks.bind(this);
   }
 
   onSearchChange(term) {
@@ -46,12 +48,9 @@ class SearchBar extends Component {
   updateSearchedBooks() {
     BooksAPI.search(this.state.searchTerm)
     .then((books) => {
-      if(books.error){
         this.setState(() => ({
-          results: "false",
-          searchedBooks: []
+          searchedBooks: books
         }))
-      }
     })
   }
 
@@ -89,7 +88,8 @@ class SearchBar extends Component {
                 {Object.keys(this.state.searchedBooks).map((id) => (
                   <SearchedBookList
                     book={this.state.searchedBooks[id]}
-                    updateBooks={this.state.updateSearchedBooks}
+                    updateSearchedBooks={this.updateSearchedBooks}
+                    updateBooks={this.props.updateBooks}
                     key={id}
                   />
                 ))}
