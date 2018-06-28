@@ -14,8 +14,8 @@ class SearchedBookList extends Component {
 
   render(){
     const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
-    const title = typeof this.props.book.title === "undefined" ? "" : this.props.book.title;
-    const author = typeof this.props.book.authors === "undefined" ? "" : this.props.book.authors;
+    const title = typeof this.props.book.title === "undefined" ? "Title Unknown" : this.props.book.title;
+    const author = typeof this.props.book.authors === "undefined" ? "Author/s Unknown" : this.props.book.authors;
     return(
       <div>
         <li>
