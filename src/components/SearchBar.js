@@ -12,8 +12,6 @@ class SearchBar extends Component {
       searchedBooks: [],
       results: "empty"
     }
-
-    this.updateSearchedBooks = this.updateSearchedBooks.bind(this);
   }
 
   onSearchChange(term) {
