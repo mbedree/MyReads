@@ -12,6 +12,10 @@ class SearchedBookList extends Component {
     })
   }
 
+  setShelf(){
+    
+  }
+
   render(){
     const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
     const title = typeof this.props.book.title === "undefined" ? "Title Unknown" : this.props.book.title;
@@ -24,7 +28,7 @@ class SearchedBookList extends Component {
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
               <div className="book-shelf-changer">
               <select
-                value="none"
+                value={this.setShelf}
                 onChange={(event) => this.onSelect(this.props.book, event.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
