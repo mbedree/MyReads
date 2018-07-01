@@ -14,14 +14,14 @@ class SearchedBookList extends Component {
 
   setShelf(){
     let shelf = "none";
-    let books = this.props.books;
-    for(var i = 0; i < books.length; i++){
-      if(books[i].id === this.props.book.id) {
-        shelf = books[i].shelf
-        console.log(books[i].title, books[i].shelf);
+    const books = this.props.books;
+    const book = this.props.book;
+
+    for(let i = 0; i < books.length; i++) {
+      if(books[i].id === book.id) {
+        return books[i].shelf
       }
     }
-
     return shelf;
   }
 
