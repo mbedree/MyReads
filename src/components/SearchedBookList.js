@@ -15,7 +15,7 @@ class SearchedBookList extends Component {
   render(){
     const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
     const title = typeof this.props.book.title === "undefined" ? "Title Unknown" : this.props.book.title;
-    const author = typeof this.props.book.authors === "undefined" ? "Author/s Unknown" : this.props.book.authors;
+    const authors = typeof this.props.book.authors === "undefined" ? "Author/s Unknown" : this.props.book.authors;
     return(
       <div>
         <li>
@@ -35,7 +35,11 @@ class SearchedBookList extends Component {
               </div>
             </div>
             <div className="book-title">{this.props.book.title}</div>
-            <div className="book-authors">{author}</div>
+            <div className="book-authors">{authors.length === 1 ? authors
+              : authors.map((author) => (
+                <span>{author}<br/></span>
+              ))
+            }</div>
           </div>
         </li>
       </div>
