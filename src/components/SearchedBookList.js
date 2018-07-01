@@ -36,8 +36,8 @@ class SearchedBookList extends Component {
             </div>
             <div className="book-title">{this.props.book.title}</div>
             <div className="book-authors">{authors.length === 1 ? authors
-              : authors.map((author) => (
-                <span>{author}<br/></span>
+              : authors.map((author, i) => (
+                <span key={i}>{author}<br/></span>
               ))
             }</div>
           </div>
