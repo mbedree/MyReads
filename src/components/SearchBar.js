@@ -79,6 +79,7 @@ class SearchBar extends Component {
                     book={this.state.searchedBooks[id]}
                     updateBooks={this.props.updateBooks}
                     key={id}
+                    books={this.props.books}
                   />
                 ))}
                 </ol>

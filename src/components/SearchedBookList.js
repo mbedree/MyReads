@@ -13,7 +13,6 @@ class SearchedBookList extends Component {
   }
 
   setShelf(){
-    
   }
 
   render(){
@@ -28,7 +27,7 @@ class SearchedBookList extends Component {
               <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
               <div className="book-shelf-changer">
               <select
-                value={this.setShelf}
+                value={this.setShelf()}
                 onChange={(event) => this.onSelect(this.props.book, event.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
