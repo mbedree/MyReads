@@ -10,13 +10,16 @@ class Book extends Component {
   }
 
 render() {
+  const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
+  const title = typeof this.props.book.title === "undefined" ? "Title Unknown" : this.props.book.title;
+  const authors = typeof this.props.book.authors === "undefined" ? "Author/s Unknown" : this.props.book.authors;
   return (
     <div>
       {this.props.shelf === this.props.book.shelf && (
         <li>
           <div className="book">
             <div className="book-top">
-              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${this.props.book.imageLinks.thumbnail})` }}></div>
+              <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${thumbnail})` }}></div>
               <div className="book-shelf-changer">
                 <select
                   value={this.props.shelf}
@@ -29,8 +32,16 @@ render() {
                 </select>
               </div>
             </div>
-            <div className="book-title">{this.props.book.title}</div>
-            <div className="book-authors">{this.props.book.authors}</div>
+            <div className="book-title">{title}</div>
+            <div className="book-authors">{typeof authors === "array" ?
+            authors.length === 1 ? authors
+              : authors.map((author, i) => (
+                <span key={i}>{author}<br/></span>
+              ))
+            :
+              authors
+            }}
+            </div>
           </div>
         </li>
       )}

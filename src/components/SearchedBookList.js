@@ -47,7 +47,7 @@ class SearchedBookList extends Component {
                 </select>
               </div>
             </div>
-            <div className="book-title">{this.props.book.title}</div>
+            <div className="book-title">{title}</div>
             <div className="book-authors">{typeof authors === "array" ?
             authors.length === 1 ? authors
               : authors.map((author, i) => (
