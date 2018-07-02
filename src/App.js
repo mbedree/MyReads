@@ -16,13 +16,11 @@ class BooksApp extends React.Component {
     this.updateBooks = this.updateBooks.bind(this);
   }
 
-  componentDidMount() {
-    BooksAPI.getAll()
-    .then((books) => {
+  async componentDidMount() {
+    const books = await BooksAPI.getAll()
       this.setState(() => ({
         books
       }))
-    })
   }
 
   updateBooks() {
