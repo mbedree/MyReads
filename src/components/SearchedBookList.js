@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
 
 class SearchedBookList extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   onSelect(book, shelf) {
     BooksAPI.update(book, shelf).then((books) => {
