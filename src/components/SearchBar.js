@@ -4,14 +4,10 @@ import * as BooksAPI from '../BooksAPI';
 import SearchedBookList from './SearchedBookList';
 
 class SearchBar extends Component {
-  constructor(props) {
-    super(props);
-
-    this.state= {
-      searchTerm: '',
-      searchedBooks: [],
-      results: "empty"
-    }
+  state = {
+    searchTerm: '',
+    searchedBooks: [],
+    results: "empty"
   }
 
   onSearchChange(term) {
