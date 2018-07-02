@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as BooksAPI from '../BooksAPI';
+import _ from 'lodash';
 
 class SearchedBookList extends Component {
 
@@ -23,9 +24,12 @@ class SearchedBookList extends Component {
   }
 
   render(){
+
     const thumbnail = typeof this.props.book.imageLinks === "undefined" ? "BookCover2.png" : this.props.book.imageLinks.thumbnail;
     const title = typeof this.props.book.title === "undefined" ? "Title Unknown" : this.props.book.title;
     const authors = typeof this.props.book.authors === "undefined" ? "Author/s Unknown" : this.props.book.authors;
+    const debouncedOnSelect = _.debounce((book, shelf) => { this.onSelect(book, shelf) }, 300)
+
     return(
       <div>
         <li>
@@ -35,7 +39,7 @@ class SearchedBookList extends Component {
               <div className="book-shelf-changer">
               <select
                 value={this.setShelf()}
-                onChange={(event) => this.onSelect(this.props.book, event.target.value)}>
+                onChange={(event) => debouncedOnSelect(this.props.book, event.target.value)}>
                   <option value="move" disabled>Move to...</option>
                   <option value="currentlyReading">Currently Reading</option>
                   <option value="wantToRead">Want to Read</option>
