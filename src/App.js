@@ -12,8 +12,6 @@ class BooksApp extends React.Component {
     this.state = {
       books: []
     }
-
-    this.updateBooks = this.updateBooks.bind(this);
   }
 
   async componentDidMount() {
@@ -23,7 +21,7 @@ class BooksApp extends React.Component {
       }))
   }
 
-  updateBooks() {
+  updateBooks = () => {
     BooksAPI.getAll()
     .then((books) => {
       this.setState(() => ({
