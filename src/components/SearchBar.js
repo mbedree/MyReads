@@ -14,29 +14,24 @@ class SearchBar extends Component {
     this.setState(() =>({
       searchTerm: term
     }))
-    if(term === ''){
+    term === '' ?
       this.setState(() =>({
         results: "empty"
       }))
-
-    }
-    else {
+    :
       BooksAPI.search(term)
       .then((books) => {
-        if(books.error){
+        books.error ?
           this.setState(() => ({
             results: "false",
             searchedBooks: []
           }))
-        }
-        else {
+        :
           this.setState(() => ({
             results: "true",
             searchedBooks: books
           }))
-        }
       })
-    }
   }
 
   render() {
